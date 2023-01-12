@@ -4,7 +4,7 @@ if (!(Get-WindowsOptionalFeature -FeatureName RSAT-AD-PowerShell -Online -ErrorA
     if ($install -eq "y") {
         try {
             # Install RSAT
-            Add-WindowsFeature -Name RSAT-AD-PowerShell
+            dism.exe /online /enable-feature /featurename:RemoteServerAdministrationTools /quiet
             Write-Host "RSAT was installed successfully."
         } catch {
             Write-Error "An error occurred while installing RSAT: $($_.Exception.Message)"
